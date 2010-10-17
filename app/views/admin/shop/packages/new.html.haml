@@ -1,0 +1,11 @@
+- @page_title = t('new_package')
+
+- render_region :main do |main|
+  - main.head do
+    = render 'admin/shop/packages/edit/head'
+
+  - main.popups do
+    = render 'admin/shop/packages/edit/popups'
+
+  - main.form do
+    = render 'admin/shop/packages/edit/form'

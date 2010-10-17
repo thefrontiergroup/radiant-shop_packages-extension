@@ -6,18 +6,23 @@ class ShopPackagesExtension < Radiant::Extension
   description "Describe your extension here"
   url "http://yourwebsite.com/shop_packages"
   
-  # extension_config do |config|
-  #   config.gem 'some-awesome-gem
-  #   config.after_initialize do
-  #     run_something
-  #   end
-  # end
+  extension_config do |config|
+    config.after_initialize do
+      #
+    end
+  end
 
-  # See your config/routes.rb file in this extension to define custom routes
-  
   def activate
-    # tab 'Content' do
-    #   add_item "Shop Packages", "/admin/shop_packages", :after => "Pages"
-    # end
+    
+    UserActionObserver.instance.send :add_observer!, ShopPackage
+    
+    unless defined? admin.packages
+      Radiant::AdminUI.send :include, ShopPackages::Interface::Packages
+      
+      admin.packages = Radiant::AdminUI.load_default_shop_packages_regions
+    end
+    
+    ShopProduct.send :include, ShopPackages::Models::ShopPackageable
+    
   end
 end

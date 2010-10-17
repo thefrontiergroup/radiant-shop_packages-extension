@@ -1,0 +1,13 @@
+- @page_title = t('packages') + ' - ' + default_page_title
+
+.outset
+
+  #head.min
+    = render :partial => '/admin/shop/packages/index/head'
+
+  #packages_map.map
+    %ul#packages
+      = render :partial => '/admin/shop/packages/index/package', :collection => @shop_packages
+
+  #actions
+    = render :partial => '/admin/shop/packages/index/foot'

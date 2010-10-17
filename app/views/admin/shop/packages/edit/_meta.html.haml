@@ -1,0 +1,8 @@
+- if @meta.present?
+  .drawer
+    .drawer_contents#attributes
+      %table.fieldset
+        - @meta.each do |meta|
+          = render :partial => "admin/shop/packages/edit/meta/#{meta}", :locals => { :f => f }
+    .drawer_handle
+      %a.toggle{:href=>'#attributes', :rel=>"toggle[attributes]", :class=>"#{(meta_errors? ? 'less' : 'more')}"}= meta_label

@@ -1,0 +1,9 @@
+%li.package.object{:id => "package_#{package.id}", :'data-id' => package.id}
+  .attributes
+    - render_region :body do |body|
+      - body.name do
+        %span.name.attribute
+          = link_to package.name, [:edit_admin, package]
+      - body.modify do
+        .modify
+          %span.remove= link_to t('remove'), [:remove_admin, package]

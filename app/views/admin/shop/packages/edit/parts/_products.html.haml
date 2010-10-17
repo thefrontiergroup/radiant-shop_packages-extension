@@ -1,0 +1,3 @@
+%ol#package_products
+  - @shop_package.packings.each do |packing|
+    = render :partial => 'admin/shop/packages/edit/shared/product', :locals => { :product => packing.product, :packing => packing }

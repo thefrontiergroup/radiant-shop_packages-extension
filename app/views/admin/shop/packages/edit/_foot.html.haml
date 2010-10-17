@@ -1,0 +1,17 @@
+- render_region :foot do |foot|
+  - foot.buttons do
+    %p.buttons
+      = save_model_button(@shop_package)
+      = save_model_and_continue_editing_button(@shop_package)
+      = t('or')
+      = link_to t('cancel'), admin_shop_packages_path
+  - foot.timestamp do
+    = updated_stamp @shop_package
+
+- unless @shop_package.new_record?
+  :javascript
+    if(typeof(ROUTES) === 'undefined') ROUTES = new Array();
+  
+    ROUTES['sort_admin_shop_package_packings_path'] = "#{sort_admin_shop_package_packings_path(@shop_package)}";
+    ROUTES['admin_shop_package_packings_path']      = "#{admin_shop_package_packings_path(@shop_package)}";
+    ROUTES['admin_shop_package_packing_path']       = "#{admin_shop_package_packing_path(@shop_package,':d')}";

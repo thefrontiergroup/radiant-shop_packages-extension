@@ -1,0 +1,8 @@
+%li.product{ :id => "product_#{packing.id rescue product.id}", :'data-packing_id' => (packing.id rescue nil), :'data-product_id' => product.id }
+  .wrapper
+    = image_tag(product.images.first.url(:preview)) unless product.images.empty?
+    %span.title= product.sku
+    %input.quantity{ :id => "packing_#{packing.id rescue nil }_quantity", :value => (packing.quantity rescue nil), :'data-packing_id' => (packing.id rescue nil) }
+    %button.save_quantity{ :onclick => 'return false' } save
+    .actions
+      %span.delete

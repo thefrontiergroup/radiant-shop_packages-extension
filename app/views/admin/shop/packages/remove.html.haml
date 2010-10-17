@@ -1,0 +1,12 @@
+%h1
+  = t('remove_package')
+
+%p
+  = t('text.remove_package.warning')
+
+- form_for [:admin, @shop_package.becomes(ShopPackage)], :html => {:method => :delete, 'data-onsubmit_status'=>"Removing Package&#8230;"} do
+  
+  %p.buttons
+    %input.button{:type=>"submit", :value => t('delete_package') }/
+    = t('or')    
+    = link_to t('cancel'), admin_shop_packages_path
