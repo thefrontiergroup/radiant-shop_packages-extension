@@ -14,6 +14,10 @@ class ShopPackagesExtension < Radiant::Extension
 
   def activate
     
+    tab "Shop" do
+      add_item "Packages", "/admin/shop/packages", :after => "products"
+    end
+    
     UserActionObserver.instance.send :add_observer!, ShopPackage
     
     unless defined? admin.packages

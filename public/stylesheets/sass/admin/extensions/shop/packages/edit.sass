@@ -1,0 +1,162 @@
+ol#package_products
+  overflow: hidden
+  padding:
+    top: 10px
+    
+  li.product
+    float: left
+    position: relative
+    padding: 10px
+    height: 100px
+    width: 100px
+    margin:
+      right: 10px
+    border:
+      radius: 6px
+    -moz:
+      border:
+        radius: 6px
+    -webkit:
+      border:
+        radius: 6px
+    cursor: move
+    overflow: hidden
+    *
+      vertical:
+        align: middle
+    
+    .wrapper
+      display: table-cell
+      height: 100px
+      width: 100px
+      text:
+        align: center
+      vertical:
+        align: middle
+        
+    img
+      width: 100px
+      max:
+        height: 100px
+        
+    .title
+      font-size: 10px
+      position: absolute
+      display: block
+      width: 96%
+      top: 37.5px
+      left: 0
+      padding: 4px 2%
+      overflow: hidden
+      
+    .quantity
+      visibility: hidden
+      font-size: 10px
+      position: absolute
+      display: block
+      width: 30px
+      bottom: 14px
+      left: 18px
+      padding: 2px 0
+      
+    .save_quantity
+      width: 45px
+      visibility: hidden
+      position: absolute
+      right: 14px
+      bottom: 14px
+      
+    .actions
+      position: absolute
+      display: block
+      width: 100%
+      top: 0
+      left: 0
+      
+      .delete
+        position: absolute
+        right: 2px
+        top: 4px
+        width: 20px
+        height: 20px
+        overflow: hidden
+        display: block
+        cursor: pointer
+        background:
+          image: url('/images/admin/minus_disabled.png')
+          repeat: no-repeat
+          position: 0 0
+        cursor: pointer
+        
+        &:hover
+          background:
+            image: url('/images/admin/minus.png')
+        
+    &:hover
+      background:
+        color: #f9f6fe
+        
+      .title, .quantity, .save_quantity
+        visibility: visible
+        
+      .title
+        background-color: #f9f6fe
+     
+#browse_products_popup
+  position: relative
+  overflow: hidden
+  
+  ul#available_products
+    width: 700px
+    padding: 5px 0 10px
+    overflow: hidden
+    position: relative
+    
+    li.product
+      position: relative
+      background-color: #f9f6fe
+      display: block
+      float: left
+      height: 70px
+      width: 70px
+      padding: 10px
+      margin: 0 5px 5px
+      border:
+        radius: 6px
+      -moz:
+        border:
+          radius: 6px
+      -webkit:
+        border:
+          radius: 6px
+      cursor: pointer
+    
+      *
+        vertical:
+          align: middle
+        
+      .wrapper
+        display: table-cell
+        height: 70px
+        width: 70px
+        text:
+          align: center
+        vertical:
+          algin: middle
+      
+        img
+          width: 70px
+    
+      .title
+        font-size: 10px
+        position: absolute
+        display: block
+        width: 96%
+        top: 37.5px
+        left: 0
+        background-color: #f9f6fe
+        padding: 4px 2%
+        overflow: hidden
+        
+      .actions, .quantity, .save_quantity
+        display: none
