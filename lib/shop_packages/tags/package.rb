@@ -1,4 +1,4 @@
-module Shop
+module ShopPackages
   module Tags
     module Package
       include Radiant::Taggable
@@ -51,10 +51,9 @@ module Shop
       [:price, :value].each do |symbol|
         desc %{ output #{symbol} of product }
         tag "shop:package:#{symbol}" do |tag|
-          attr    = tag.attr.symbolize_keys
-          package = tag.locals.shop_package
+          attr = tag.attr.symbolize_keys
           
-          Helpers.currency(package.send(symbol),attr)
+          Shop::Tags::Helpers.currency(tag.locals.shop_package.send(symbol),attr)
         end
       end
       

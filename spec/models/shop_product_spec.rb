@@ -15,6 +15,11 @@ describe ShopProduct do
     it 'should have many packages' do
       @product.packages.is_a?(Array).should be_true
     end
+    
+    it 'should have many related' do
+      @product.related.is_a?(Array).should be_true
+    end
+    
   end
   
 end

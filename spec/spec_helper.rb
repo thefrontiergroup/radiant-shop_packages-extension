@@ -11,6 +11,7 @@ unless defined? RADIANT_ROOT
 end
 require "#{RADIANT_ROOT}/spec/spec_helper"
 
+Dataset::Resolver.default << (File.dirname(__FILE__) + "/../../shop/spec/datasets")
 Dataset::Resolver.default << (File.dirname(__FILE__) + "/datasets")
 
 if File.directory?(File.dirname(__FILE__) + "/matchers")

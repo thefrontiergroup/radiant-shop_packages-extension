@@ -5,7 +5,7 @@ describe ShopPackages::Tags::Package do
   dataset :pages, :shop_packages
   
   it 'should describe these tags' do
-    Shop::Tags::Package.tags.sort.should == [
+    ShopPackages::Tags::Package.tags.sort.should == [
       'shop:packages',
       'shop:packages:if_packages',
       'shop:packages:unless_packages',
@@ -63,7 +63,7 @@ describe ShopPackages::Tags::Package do
       end
       context 'failure' do
         it 'should render' do
-          mock(Shop::Tags::Helpers).current_packages(anything) { [] }
+          mock(ShopPackages::Tags::Helpers).current_packages(anything) { [] }
           tag = %{<r:shop:packages:if_packages>failure</r:shop:packages:if_packages>}
           exp = %{}
           
@@ -75,7 +75,7 @@ describe ShopPackages::Tags::Package do
     describe '<r:shop:packages:unless_packages>' do
       context 'success' do
         it 'should not render' do
-          mock(Shop::Tags::Helpers).current_packages(anything) { [] }
+          mock(ShopPackages::Tags::Helpers).current_packages(anything) { [] }
           
           tag = %{<r:shop:packages:unless_packages>success</r:shop:packages:unless_packages>}
           exp = %{success}
@@ -85,7 +85,7 @@ describe ShopPackages::Tags::Package do
       end
       context 'failure' do
         it 'should render' do
-          mock(Shop::Tags::Helpers).current_packages(anything) { ShopPackage.all }
+          mock(ShopPackages::Tags::Helpers).current_packages(anything) { ShopPackage.all }
         
           tag = %{<r:shop:packages:unless_packages>failure</r:shop:packages:unless_packages>}
           exp = %{}
@@ -98,7 +98,7 @@ describe ShopPackages::Tags::Package do
     describe '<r:shop:packages:each>' do
       context 'success' do
         it 'should render' do
-          mock(Shop::Tags::Helpers).current_packages(anything) { ShopPackage.all }
+          mock(ShopPackages::Tags::Helpers).current_packages(anything) { ShopPackage.all }
           
           tag = %{<r:shop:packages:each>.a.</r:shop:packages:each>}
           exp = ShopPackage.all.map{ '.a.' }.join('')
@@ -109,7 +109,7 @@ describe ShopPackages::Tags::Package do
       
       context 'failure' do
         it 'should not render' do
-          mock(Shop::Tags::Helpers).current_packages(anything) { [] }
+          mock(ShopPackages::Tags::Helpers).current_packages(anything) { [] }
           
           tag = %{<r:shop:packages:each>failure</r:shop:packages:each>}
           exp = %{}
@@ -122,7 +122,7 @@ describe ShopPackages::Tags::Package do
     describe '<r:shop:package>' do
       context 'success' do
         it 'should render' do
-          mock(Shop::Tags::Helpers).current_package(anything) { @package }
+          mock(ShopPackages::Tags::Helpers).current_package(anything) { @package }
           
           tag = %{<r:shop:package>success</r:shop:package>}
           exp = %{success}
@@ -133,7 +133,7 @@ describe ShopPackages::Tags::Package do
       
       context 'failure' do
         it 'should not render' do
-          mock(Shop::Tags::Helpers).current_package(anything) { nil }
+          mock(ShopPackages::Tags::Helpers).current_package(anything) { nil }
           
           tag = %{<r:shop:package>failure</r:shop:package>}
           exp = %{}
@@ -148,7 +148,7 @@ describe ShopPackages::Tags::Package do
   context 'within a package' do
     
     before :each do
-      mock(Shop::Tags::Helpers).current_package(anything) { @package }
+      mock(ShopPackages::Tags::Helpers).current_package(anything) { @package }
     end
     
     context 'simple attributes' do
@@ -192,6 +192,12 @@ describe ShopPackages::Tags::Package do
     end
     
     context 'currency attributes' do
+      before :each do
+        Radiant::Config['shop.price_unit']      = '$'
+        Radiant::Config['shop.price_precision'] = 2
+        Radiant::Config['shop.price_separator'] = '.'
+        Radiant::Config['shop.price_delimiter'] = ','
+      end
       describe '<r:shop:package:price />' do
         before :each do
           @package.price = 1234.34567890
@@ -218,7 +224,7 @@ describe ShopPackages::Tags::Package do
         end
       end
       
-      describe '<r:shop:package:name />' do
+      describe '<r:shop:package:value />' do
         before :each do
           stub(@package).value { 1234.34567890 }
         end
@@ -251,7 +257,7 @@ describe ShopPackages::Tags::Package do
   context 'products in a package' do
     
     before :each do
-      mock(Shop::Tags::Helpers).current_package(anything) { @package }
+      mock(ShopPackages::Tags::Helpers).current_package(anything) { @package }
     end
           
     describe '<r:shop:package:if_products>' do  
