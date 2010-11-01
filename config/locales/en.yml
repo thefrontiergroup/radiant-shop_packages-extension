@@ -1,3 +1,11 @@
 ---
 en:
   shop packages: Shop Packages
+  packages: Packages
+  add_package: Add Package
+  new_package: New Package
+  remove_package: Remove Package
+  text:
+    remove_package:
+      warning: Removing a package is irreversible
+  delete_package: Delete Package
