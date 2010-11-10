@@ -10,13 +10,13 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dirk Kelly"]
   s.date = %q{2010-11-10}
-  s.description = %q{Shop Packages Extension for Radiant CMS}
+  s.description = %q{RadiantShop: Group up Products into packages, you can assign a price to a package}
   s.email = %q{dk@dirkkelly.com}
   s.extra_rdoc_files = [
     "README"
   ]
   s.files = [
-    "Gemfile",
+    ".gitignore",
      "README",
      "Rakefile",
      "VERSION",
@@ -60,6 +60,7 @@ Gem::Specification.new do |s|
      "lib/tasks/shop_packages_extension_tasks.rake",
      "public/javascripts/admin/extensions/shop/packages/edit.js",
      "public/stylesheets/sass/admin/extensions/shop/packages/edit.sass",
+     "radiant-shop_packages-extension.gemspec",
      "shop_packages_extension.rb",
      "spec/controllers/admin/shop/packages/packings_controller_spec.rb",
      "spec/controllers/admin/shop/packages_controller_spec.rb",
@@ -92,9 +93,12 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<radiant-shop-extension>, [">= 0"])
     else
+      s.add_dependency(%q<radiant-shop-extension>, [">= 0"])
     end
   else
+    s.add_dependency(%q<radiant-shop-extension>, [">= 0"])
   end
 end
 
