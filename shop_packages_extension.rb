@@ -1,14 +1,11 @@
-# Uncomment this if you reference any of your controllers in activate
-# require_dependency 'application_controller'
-
 class ShopPackagesExtension < Radiant::Extension
-  version "1.0"
-  description "Describe your extension here"
-  url "http://yourwebsite.com/shop_packages"
+  version YAML::load_file(File.join(File.dirname(__FILE__), 'VERSION'))
+  description "Group up Products into packages, you can assign a price to a package"
+  url "https://github.com/thefrontiergroup/radiant-shop_packages-extension/"
   
   extension_config do |config|
     config.after_initialize do
-      #
+      config.gem 'radiant-shop-extension'
     end
   end
   
@@ -17,7 +14,7 @@ class ShopPackagesExtension < Radiant::Extension
   def activate
     
     tab "Shop" do
-      add_item "Packages", "/admin/shop/packages", :after => "products"
+      add_item "Packages", "/admin/shop/packages", :before => "Orders"
     end
     
     unless defined? admin.packages
