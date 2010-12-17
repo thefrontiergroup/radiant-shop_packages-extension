@@ -26,8 +26,11 @@ class ShopPackagesExtension < Radiant::Extension
     ShopProduct.send :include, ShopPackages::Models::ShopPackageable
     Page.send        :include, ShopPackages::Tags::Package
     
-    if Radiant::Extension.descendants.any? { |extension| extension.extension_name == 'ShopDiscounts' }
-      ShopPackage.send  :include, ShopDiscounts::Models::Discountable
+    if defined?(ShopDiscount)
+      ShopPackage.send                      :include, ShopDiscounts::Models::Discountable
+      Admin::Shop::DiscountsController.send :include, ShopPackages::Controllers::DiscountsController
+      ShopDiscount.send                     :include, ShopPackages::Models::ShopDiscount
+      ShopDiscountable.send                 :include, ShopPackages::Models::ShopDiscountable
     end
     
   end

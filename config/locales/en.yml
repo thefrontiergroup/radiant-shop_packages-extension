@@ -5,6 +5,7 @@ en:
   add_package: Add Package
   new_package: New Package
   remove_package: Remove Package
+  browse_packages: Browse Packages
   text:
     remove_package:
       warning: Removing a package is irreversible

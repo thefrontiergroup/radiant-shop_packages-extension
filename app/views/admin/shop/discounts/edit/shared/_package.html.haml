@@ -1,0 +1,11 @@
+- discounted_type = package.class.to_s
+
+- discounted_id   = discounted_type != "ShopDiscountable" ? package.id          : package.discounted_id
+- discountable_id = discounted_type != "ShopDiscountable" ? nil                 : package.id
+- success_element = discounted_type != "ShopDiscountable" ? 'discount_packages' : 'available_packages'
+- class_type      = discounted_type != "ShopDiscountable" ? 'available'         : 'discounted'
+
+%li.product{:class => "discountable #{class_type} package", :id => "#{class_type}_#{package.id}", :'data-discounted_id' => discounted_id, :'data-discounted_type' => discounted_type, :'data-discounted_type_human' => 'Package', :'data-discountable_id' => discountable_id, :'data-success_element' => success_element }
+  %span.name= truncate((package.name rescue package.discounted.name), 30, '...')
+  .actions
+    %span.delete

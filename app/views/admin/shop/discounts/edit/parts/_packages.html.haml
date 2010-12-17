@@ -1,0 +1,3 @@
+%ul#discount_packages.packages.discounteds
+  - @shop_discount.discountables.for('Package').each do |package|
+    = render :partial => 'admin/shop/discounts/edit/shared/package', :locals => { :package => package }

@@ -1,0 +1,6 @@
+%h3.title= t('browse_packages')
+
+%ul#available_packages.availables
+  = render :partial => '/admin/shop/discounts/edit/shared/package', :collection => @shop_discount.available_packages
+
+%a#browse_packages_popup_close.close{ :href => '#browse_packages_popup_close' }

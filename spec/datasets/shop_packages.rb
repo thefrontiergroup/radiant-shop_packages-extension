@@ -3,7 +3,8 @@ class ShopPackagesDataset < Dataset::Base
  
  def load
    packages = {
-     :bread  => [ :soft, :crusty, :warm ]
+     :bread  => [ :soft, :crusty, :warm ],
+     :milk   => [ :full, :hilo, :choc ]
    }
    packages.each do |package, products|
      create_record :shop_package, "all_#{package.to_s}".to_sym,
@@ -12,11 +13,11 @@ class ShopPackagesDataset < Dataset::Base
        :price    => 1 * 10
        
      products.each_with_index do |product, i|
-       create_record :shop_packing, "#{product.to_s}_bread".to_s.to_sym,
+       create_record :shop_packing, "#{product.to_s}_#{package.to_s}".to_s.to_sym,
          :quantity => 1,
          :position => 1,
          :package  => shop_packages("all_#{package.to_s}".to_sym),
-         :product  => shop_products("#{product.to_s}_bread".to_sym)
+         :product  => shop_products("#{product.to_s}_#{package.to_s}".to_sym)
      end
    end	
  end
