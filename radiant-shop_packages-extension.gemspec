@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{radiant-shop_packages-extension}
-  s.version = "0.0.3"
+  s.version = "0.0.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dirk Kelly"]
-  s.date = %q{2010-12-01}
+  s.date = %q{2010-12-17}
   s.description = %q{RadiantShop: Group up Products into packages, you can assign a price to a package}
   s.email = %q{dk@dirkkelly.com}
   s.extra_rdoc_files = [
@@ -25,6 +25,10 @@ Gem::Specification.new do |s|
     "app/datasets/shop_packages.rb",
     "app/models/shop_package.rb",
     "app/models/shop_packing.rb",
+    "app/views/admin/shop/discounts/edit/buttons/_browse_packages.html.haml",
+    "app/views/admin/shop/discounts/edit/parts/_packages.html.haml",
+    "app/views/admin/shop/discounts/edit/popups/_browse_packages.html.haml",
+    "app/views/admin/shop/discounts/edit/shared/_package.html.haml",
     "app/views/admin/shop/packages/edit.html.haml",
     "app/views/admin/shop/packages/edit/_foot.html.haml",
     "app/views/admin/shop/packages/edit/_form.html.haml",
@@ -53,7 +57,10 @@ Gem::Specification.new do |s|
     "cucumber.yml",
     "db/migrate/20101015161749_setup_shop_packages.rb",
     "lib/radiant-shop_packages-extension.rb",
+    "lib/shop_packages/controllers/discounts_controller.rb",
     "lib/shop_packages/interface/packages.rb",
+    "lib/shop_packages/models/shop_discount.rb",
+    "lib/shop_packages/models/shop_discountable.rb",
     "lib/shop_packages/models/shop_packageable.rb",
     "lib/shop_packages/tags/helpers.rb",
     "lib/shop_packages/tags/package.rb",
@@ -62,10 +69,13 @@ Gem::Specification.new do |s|
     "public/stylesheets/sass/admin/extensions/shop/packages/edit.sass",
     "radiant-shop_packages-extension.gemspec",
     "shop_packages_extension.rb",
+    "spec/controllers/admin/shop/discounts_controller_spec.rb",
     "spec/controllers/admin/shop/packages/packings_controller_spec.rb",
     "spec/controllers/admin/shop/packages_controller_spec.rb",
     "spec/datasets/shop_packages.rb",
     "spec/lib/shop_packages/tags/package_spec.rb",
+    "spec/models/shop_discount_spec.rb",
+    "spec/models/shop_discountable_spec.rb",
     "spec/models/shop_package_spec.rb",
     "spec/models/shop_packing_spec.rb",
     "spec/models/shop_product_spec.rb",
@@ -77,10 +87,13 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{Shop Packages Extension for Radiant CMS}
   s.test_files = [
+    "spec/controllers/admin/shop/discounts_controller_spec.rb",
     "spec/controllers/admin/shop/packages/packings_controller_spec.rb",
     "spec/controllers/admin/shop/packages_controller_spec.rb",
     "spec/datasets/shop_packages.rb",
     "spec/lib/shop_packages/tags/package_spec.rb",
+    "spec/models/shop_discount_spec.rb",
+    "spec/models/shop_discountable_spec.rb",
     "spec/models/shop_package_spec.rb",
     "spec/models/shop_packing_spec.rb",
     "spec/models/shop_product_spec.rb",
