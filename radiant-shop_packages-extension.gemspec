@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{radiant-shop_packages-extension}
-  s.version = "0.0.5"
+  s.version = "0.0.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dirk Kelly"]
-  s.date = %q{2011-01-19}
+  s.date = %q{2011-02-21}
   s.description = %q{RadiantShop: Group up Products into packages, you can assign a price to a package}
   s.email = %q{dk@dirkkelly.com}
   s.extra_rdoc_files = [
