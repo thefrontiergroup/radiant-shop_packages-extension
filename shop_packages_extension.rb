@@ -13,9 +13,11 @@ class ShopPackagesExtension < Radiant::Extension
   
   def activate
     
-    tab "Shop" do
-      add_item "Packages", "/admin/shop/packages", :before => "Orders"
-    end
+    # XXX: Removed menu item, but we still need packages to display old orders
+    # that contain them
+    #tab "Shop" do
+      #add_item "Packages", "/admin/shop/packages", :before => "Orders"
+    #end
     
     unless defined? admin.packages
       Radiant::AdminUI.send :include, ShopPackages::Interface::Packages
